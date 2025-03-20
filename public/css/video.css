@@ -1,0 +1,114 @@
+/* Contenedor principal del header */
+.contenidoH {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Ocupa toda la pantalla */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10%; /* Espaciado lateral */
+    text-align: left;
+    color: white;
+    overflow: hidden;
+}
+
+/* Video de fondo */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Oscurecer el video */
+.contenidoH::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Ajusta la opacidad según lo necesites */
+    z-index: 0;
+}
+
+/* Contenedor flexible para los elementos */
+.header-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Logo alineado a la izquierda */
+.logo-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.logo-container img {
+    height: 120px;
+    width: auto;
+}
+
+/* Contenedor del texto */
+.text-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 600px;
+    text-align: justify; /* Justificar el texto */
+}
+
+/* Ajuste del párrafo */
+p_header {
+    font-size: 20px;
+    max-width: 600px;
+    margin-bottom: 20px;
+    text-align: justify; /* Justificación */
+}
+
+/* Botón alineado debajo del texto */
+/* Centrar el botón sin modificar su estilo */
+.btn-home {
+    display: flex;
+    justify-content: center; /* Centra el botón */
+    width: 100%; /* Para que se mantenga centrado */
+    margin-top: 20px;
+}
+
+/* Responsive: En pantallas pequeñas, centrar todo */
+@media (max-width: 768px) {
+    .contenidoH {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo-container {
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .text-container {
+        align-items: center;
+        text-align: center;
+    }
+
+    .btn-home {
+        justify-content: center;
+    }
+}

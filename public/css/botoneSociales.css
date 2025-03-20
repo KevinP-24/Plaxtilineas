@@ -1,0 +1,122 @@
+/* --- ESTILOS PARA BOTONES FLOTANTES --- */
+
+/* Animación de balanceo */
+@keyframes balanceo {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+  }
+  
+  /* Estilo del botón de WhatsApp */
+  .whatsapp-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: balanceo 2s infinite ease-in-out;
+  }
+  
+  /* Notificación en el botón de WhatsApp */
+  .whatsapp-button .notification {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #ff3b30;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Efecto hover en WhatsApp */
+  .whatsapp-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Mensaje emergente */
+  .help-message {
+    position: fixed;
+    bottom: 20px; 
+    right: 90px;
+    background-color: #25D366;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 1000;
+  }
+  
+  /* Mostrar mensaje emergente */
+  .help-message.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Estilos generales para botones flotantes */
+  .social-button {
+    position: fixed;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 1000;
+  }
+  
+  /* Estilos específicos de cada botón */
+  .facebook-button {
+    bottom: 90px;
+    background-color: #1877F2;
+  }
+  
+  .facebook-button img {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .instagram-button {
+    bottom: 160px;
+    background: radial-gradient(circle at 30% 30%, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  }
+  
+  .instagram-button img {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .social-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  }
+  

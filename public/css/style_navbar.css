@@ -1,0 +1,175 @@
+:root {
+    --primary-color: #648a4c;  /* Verde principal */
+    --secondary-color: #ffffff; /* Blanco */
+    --background-color: #f4f4f4; /* Gris claro */
+    --text-color: #333333; /* Gris oscuro */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra */
+    --border-radius: 12px; /* Bordes redondeados */
+  }
+  /* Formato general*/
+  * {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100;
+    vertical-align: baseline;
+    box-sizing: border-box;
+  }
+  /*Formato del cuerpo de la pagina*/
+  body{
+    margin: 0 auto;
+    text-align: center;
+    font-family:  sans-serif;
+  }
+  /****** Formato de la cabecera, botones de navegación ******/
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    background: rgba(253, 253, 253, 0.5);
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    padding: 0 10px;
+  }
+  .logo-img {
+    height: 50px;
+    width: auto;
+  }
+  /****** Botón hamburguesa ******/
+  .menu-toggle {
+    display: none; /* Oculto por defecto */
+    font-size: 24px;
+    color: #58813e;
+    cursor: pointer;
+    background: none;
+    border: none;
+    position: relative;
+    margin-right: 10px; /* Ajustado para mantener coherencia */
+  }
+  /****** Botones de navegación ******/
+  .navbar {
+    display: flex;
+    gap: 15px;
+    padding: 0 15.5px;
+  }
+  /****** Botón base ******/
+  .btn2 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 25px;
+    border: 2px solid #58813e;
+    color: #58813e;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    z-index: 1;
+    border-radius: 10px;
+  }
+  .btn2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff13;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.3s ease-out;
+    z-index: -1;
+  }
+  .btn2:hover::before {
+    transform: scaleY(1);
+  }
+  .btn2:hover {
+    color: #ffffff;
+    background-color: #58813e;
+  }
+  .btn2 span {
+    position: relative;
+    z-index: 2;
+  }
+  /*Formato para el boton de contacto*/
+  /* From Uiverse.io by alshahwan */ 
+  .btn-contact {
+    background-color: #ffffff00;
+    border: 2px solid #58813e;
+    padding: 12px 25px; /* Ajuste para mantener coherencia */
+    width: auto; /* Ajuste automático del ancho */
+    height: 50px; /* Tamaño fijo para la altura */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espacio entre texto y svg */
+    transition: 0.3s ease; /* Transición suave */
+    font-size: 18px; /* Tamaño de fuente coherente */
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0.4em;
+    color: #58813e; /* Texto blanco */
+    position: relative;
+    border-radius: 10px;
+  }
+  .btn-contact p {
+    margin: 0;
+    padding: 0;
+    line-height: 1; /* Ajuste para evitar desbordes verticales */
+    color: #58813e;
+    position: relative;
+    z-index: 2;
+    transition: 0.3s ease; /* Transición suave */
+  }
+  .btn-contact svg {
+    height: 200px; /* Tamaño adecuado del ícono */
+    fill: #fff; /* Color blanco del ícono */
+    opacity: 0; /* Ícono oculto por defecto */
+    transition: 0.3s ease; /* Animación suave */
+    position: absolute;
+    top: 50%;
+    right: 0.5em;
+    transform: translateY(-50%);
+  }
+  .btn-contact:hover {
+    background-color: #1eb856; /* Color al hacer hover */
+    border-color: #1eb856;
+  }
+  .btn-contact:hover p {
+    color: #fff;
+    transform: translateX(-10px); /* Movimiento suave hacia la izquierda */
+  }
+  .btn-contact:hover svg {
+    opacity: 1; /* Ícono aparece con hover */
+    transform: translateX(0) translateY(-50%); /* Ajuste suave de posición */
+  }
+  /* Menú oculto por defecto en móviles */
+@media (max-width: 768px) {
+  .navbar {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      right: 10px;
+      background: white;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      width: 200px;
+      border-radius: 10px;
+      padding: 10px 0;
+  }
+
+  /* Cuando se activa el botón hamburguesa */
+  .navbar.active {
+      display: flex;
+  }
+
+  .menu-toggle {
+      display: block;
+  }
+}
