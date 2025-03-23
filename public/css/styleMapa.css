@@ -1,36 +1,41 @@
-/* ----- Estilos para la Sección de Ubicación ----- */
-.seccion-ubicacion {
-    width: 100vw; /* Ocupa todo el ancho de la pantalla */
-    margin: 80px 0; /* Márgenes arriba y abajo para mayor separación */
-    padding: 40px 0;
-    text-align: center;
-    background-color: #f9f9f9; /* Manteniendo la coherencia de diseño */
-  }
-  
-  .mapa-container {
-    width: 100vw; /* Se expande a todo el ancho de la pantalla */
-    height: 450px; /* Ajuste de altura para mejor visualización */
-    border-radius: 0; /* Elimina esquinas redondeadas */
-    overflow: hidden;
-  }
-  
-  .mapa-container iframe {
-    width: 100vw;
-    height: 100%;
-    border: 0;
-  }
-  
-  /* Botón de llamado a la acción */
-  .mapa-boton {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  /* Manteniendo el estilo original del botón */
-  .map-buttons .btn2 {
-    display: inline-block;
-    width: auto; /* El ancho se ajusta al contenido */
-    margin-top: 10px;
-  }
-  
+.contenidoM.mapa {
+  margin-top: 100px;
+  margin-bottom: 100px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f9f9f9;
+  border-radius: 0; /* Sin bordes redondeados */
+  box-shadow: none; /* Sin sombras */
+}
+
+.mapa-container {
+  width: 100vw; /* Todo el ancho de la pantalla */
+  height: 450px;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.mapa-container iframe {
+  width: 100vw;
+  height: 100%;
+  border: 0;
+}
+
+.mapa-boton {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.map-buttons .btn2 {
+  display: inline-block;
+  width: auto;
+  margin-top: 10px;
+}
+
+.map-subtitle {
+  margin-bottom: 30px; /* Espacio entre el texto y el mapa */
+}
+.map-buttons {
+  margin-top: 30px; /* Igual separación que el subtítulo */
+}
