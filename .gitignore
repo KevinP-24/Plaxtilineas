@@ -48,3 +48,24 @@ build/
 coverage/
 tmp/
 temp/
+
+# En tu archivo .gitignore
+.env
+
+# Base de datos
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=plaxtilineas
+
+# Cloudinary
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+
+# Puerto del servidor
+PORT=4000
+
+# Otros secretos
+JWT_SECRET=clave_secreta_para_tokens
+ADMIN_KEY=clave_admin_para_postman

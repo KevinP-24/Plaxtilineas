@@ -1,19 +1,11 @@
 require('dotenv').config();
-const mysql = require('mysql2');
+const mysql = require('mysql2/promise'); // ✅ usa el módulo de promesas
 
-const connection = mysql.createConnection({
-    host: process.env.DB_HOST || 'localhost',  // Servidor de la base de datos
-    user: process.env.DB_USER || 'root',       // Usuario (por defecto en XAMPP)
-    password: process.env.DB_PASSWORD || '',   // Contraseña (vacía por defecto en XAMPP)
-    database: process.env.DB_NAME || 'espumas_db' // Nombre de la base de datos
+const db = mysql.createPool({
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || '',
+  database: process.env.DB_NAME || 'Plaxtilineas'
 });
 
-connection.connect((err) => {
-    if (err) {
-        console.error('❌ Error de conexión a MySQL:', err);
-        return;
-    }
-    console.log('✅ Conexión exitosa a MySQL');
-});
-
-module.exports = connection;
+module.exports = db;
