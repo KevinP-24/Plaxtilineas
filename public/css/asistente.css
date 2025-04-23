@@ -1,36 +1,38 @@
-/* --- Sección general --- */
+/* Sección general */
 .asistente {
-  padding: 100px 20px;
   background-color: #e5e5e5;
   display: flex;
   justify-content: center;
+  min-height: 500px;
+  position: relative;
+  padding: 0 20px;
 }
 
+/* Contenedor principal */
 .main-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end; /* <-- Clave para alinear ambos abajo */
-    gap: 60px;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    width: 100%;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1200px;
+  gap: 60px;
+  position: relative;
+}
 
-/* --- Imagen del asistente --- */
-.assistant-img {
-    width: 40%;               /* Tamaño relativo al contenedor */
-    max-width: 500px;         /* No crecer más allá de 500px */
-    height: auto;             /* Mantiene proporciones originales */
-    transition: all 0.3s ease-in-out; /* Transición suave para cualquier cambio */
-  }
-  
+/* Chat centrado verticalmente */
+.chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 500px;
+  flex: 1;
+}
 
-
-/* --- Ventana tipo WhatsApp --- */
+/* Ventana tipo WhatsApp */
 .whatsapp-window {
   width: 100%;
-  max-width: 380px;
+  max-width: 320px;
+  max-height: 420px; /* ← NUEVO: limita la altura total */
   background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
@@ -40,7 +42,8 @@
   justify-content: space-between;
 }
 
-/* --- Encabezado WhatsApp --- */
+
+/* Encabezado del chat */
 .whatsapp-header {
   display: flex;
   align-items: center;
@@ -56,7 +59,7 @@
   border-radius: 50%;
 }
 
-/* --- Cuerpo (mensajes) --- */
+/* Cuerpo del mensaje */
 .whatsapp-body {
   padding: 20px;
   background-color: #ece5dd;
@@ -73,7 +76,7 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* --- Botón WhatsApp --- */
+/* Botón WhatsApp */
 .whatsapp-button {
   background-color: #25d366;
   color: white;
@@ -88,4 +91,23 @@
 
 .whatsapp-button:hover {
   background-color: #128c7e;
+}
+
+/* Contenedor exclusivo para la imagen del asistente */
+.asistente-imagen-container {
+  position: relative;
+  width: 300px;
+  height: 100%;
+  min-height: 400px;
+}
+
+/* Imagen pegada abajo */
+.assistant-img {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  max-height: 480px;
+  height: auto;
+  width: auto;
+  object-fit: contain;
 }
