@@ -60,3 +60,84 @@
   color: #555;
   line-height: 1.4;
 }
+
+/* --- Ajustes Responsivos --- */
+
+/* Tablets y móviles grandes */
+@media (max-width: 768px) {
+  .seccion-nosotros {
+    padding: 40px 15px;
+  }
+
+  .seccion-nosotros h1 {
+    font-size: 26px;
+  }
+
+  .seccion-nosotros p {
+    font-size: 16px;
+  }
+
+  .valor {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .valor i {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .valor h2 {
+    font-size: 18px;
+  }
+
+  .valor p {
+    font-size: 15px;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .seccion-nosotros {
+    padding: 30px 10px;
+  }
+
+  .seccion-nosotros h1 {
+    font-size: 22px;
+  }
+
+  .seccion-nosotros p {
+    font-size: 15px;
+  }
+
+  .valor {
+    padding: 15px;
+  }
+
+  .valor i {
+    font-size: 30px;
+  }
+
+  .valor h2 {
+    font-size: 16px;
+  }
+
+  .valor p {
+    font-size: 14px;
+  }
+}
+/* Pantallas muy grandes */
+@media (min-width: 1400px) {
+  .seccion-nosotros {
+    padding: 80px 20px;
+  }
+
+  .seccion-nosotros h1 {
+    font-size: 36px;
+  }
+
+  .valor {
+    max-width: 700px;
+  }
+}
