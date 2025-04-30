@@ -3,7 +3,7 @@
   background-color: #e5e5e5;
   display: flex;
   justify-content: center;
-  min-height: 500px;
+  min-height: 600px; /* ✅ más espacio vertical */
   position: relative;
   padding: 0 20px;
 }
@@ -11,14 +11,13 @@
 /* Contenedor principal */
 .main-container {
   display: flex;
+  align-items: center; /* ✅ centrado vertical del chat */
   justify-content: space-between;
-  align-items: stretch;
-  width: 100%;
-  max-width: 1200px;
   gap: 60px;
-  position: relative;
+  max-width: 1200px;
+  width: 100%;
+  padding-top: 90px; /* ✅ ya agregado para separar de navbar */
 }
-
 /* Chat centrado verticalmente */
 .chat-wrapper {
   display: flex;
@@ -31,8 +30,8 @@
 /* Ventana tipo WhatsApp */
 .whatsapp-window {
   width: 100%;
-  max-width: 320px;
-  max-height: 420px; /* ← NUEVO: limita la altura total */
+  max-width: 380px;      /* ✅ Ancho ampliado */
+  max-height: 650px;     /* ✅ Alto ampliado */
   background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
@@ -110,4 +109,37 @@
   height: auto;
   width: auto;
   object-fit: contain;
+}
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .chat-wrapper {
+    min-height: auto;
+    width: 100%;
+    align-items: center;
+  }
+
+  .whatsapp-window {
+    max-width: 100%;
+    width: 90%;
+  }
+
+  .asistente-imagen-container {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .assistant-img {
+    position: static;
+    max-width: 80%;
+    height: auto;
+  }
 }

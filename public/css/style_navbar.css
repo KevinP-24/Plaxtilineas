@@ -32,6 +32,8 @@ body {
   height: 70px;
   background: rgba(253, 253, 253, 0.5);
   position: fixed;
+  top: 0; /* ✅ esta línea es imprescindible */
+  left: 0;
   width: 100%;
   z-index: 100;
   padding: 0 10px;
@@ -167,20 +169,26 @@ body {
   .navbar {
     display: none;
     flex-direction: column;
-    align-items: center; /* ✅ Centra horizontalmente los botones */
+    align-items: center;
     position: absolute;
     top: 70px;
     right: 10px;
     background: white;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 220px; /* Tamaño fijo del menú */
-    border-radius: 10px;
-    padding: 15px 0;
+    box-shadow: 0px 4px 10px var(--shadow-color);
+    width: 240px;
+    border-radius: 12px;
+    padding: 20px 10px;
     z-index: 999;
   }
 
   .navbar.active {
     display: flex;
+  }
+
+  .navbar a {
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 
   .menu-toggle {
@@ -189,21 +197,51 @@ body {
 
   .btn2,
   .btn-contact {
-    width: 80%; /* ✅ Todos del mismo ancho */
+    width: 80%;
+    max-width: 200px;
     margin: 10px 0;
     font-size: 16px;
     padding: 12px 20px;
-    justify-content: center; /* ✅ Centra texto horizontalmente */
-    text-align: center;
+    border-radius: 10px;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Texto centrado inicialmente */
+    position: relative;
+  }
+
+  .btn-contact p {
+    margin: 0;
+    transition: transform 0.3s ease;
+    color: #58813e;
+    z-index: 1;
   }
 
   .btn-contact svg {
-    position: static; /* ✅ Asegura que no se desplace */
-    transform: none;
-    opacity: 1;
-    margin-left: 8px;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
     height: 18px;
     width: 18px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
+
+  .btn-contact:hover p,
+  .btn-contact:focus p {
+    transform: translateX(-10px);
+  }
+
+  .btn-contact:hover svg,
+  .btn-contact:focus svg {
+    opacity: 1;
   }
 }
 
