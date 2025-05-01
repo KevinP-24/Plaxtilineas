@@ -57,3 +57,45 @@ exports.eliminarProducto = async (req, res) => {
     res.status(500).json({ error: 'No se pudo eliminar el producto' });
   }
 };
+exports.crearProductoDesdeRuta = async (req, res) => {
+  try {
+    const {
+      nombre,
+      descripcion,
+      cantidad,
+      precio,
+      imagen_url = '',
+      subcategoria_id
+    } = {
+      nombre: req.body.nombre?.trim(),
+      descripcion: req.body.descripcion?.trim(),
+      cantidad: parseInt(req.body.cantidad),
+      precio: parseFloat(req.body.precio),
+      imagen_url: req.file?.path || '',
+      subcategoria_id: parseInt(req.body.subcategoria_id)
+    };
+
+    console.log('🟡 Datos limpios:', {
+      nombre,
+      descripcion,
+      cantidad,
+      precio,
+      imagen_url,
+      subcategoria_id
+    });
+
+    await db.query(`
+      INSERT INTO productos (nombre, descripcion, cantidad, precio, imagen_url, subcategoria_id)
+      VALUES (?, ?, ?, ?, ?, ?)`,
+      [nombre, descripcion, cantidad, precio, imagen_url, subcategoria_id]
+    );
+
+    return res.status(201).json({
+      mensaje: 'Producto con imagen creado con éxito',
+      imagen_url
+    });
+  } catch (err) {
+    console.error('❌ Error interno en crearProductoDesdeRuta:', err);
+    return res.status(500).json({ error: 'Error interno al crear el producto' });
+  }
+};
