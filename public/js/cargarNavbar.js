@@ -1,3 +1,6 @@
+const menuToggle = document.querySelector('.menu-toggle');
+const navbar = document.querySelector('.navbar');
+
 // Cargar la barra de navegación dinámicamente en todas las páginas
 document.addEventListener("DOMContentLoaded", function () {
     fetch("components/navbar.html")
@@ -27,4 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch(error => console.error("Error cargando la navegación:", error));
   });
-  
+
+  menuToggle.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+  });

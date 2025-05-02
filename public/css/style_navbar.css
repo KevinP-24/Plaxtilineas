@@ -65,6 +65,8 @@ body {
 
 /* Botón base */
 .btn2 {
+  min-width: 140px;          /* ✅ Ancho mínimo uniforme */
+  height: 50px;       
   position: relative;
   display: flex;
   justify-content: center;
@@ -167,34 +169,36 @@ body {
 /* Tablets y móviles grandes */
 @media (max-width: 768px) {
   .navbar {
-    display: none;
     flex-direction: column;
     align-items: center;
     position: absolute;
     top: 70px;
-    right: 10px;
+    right: 0;
+    width: 240px;
     background: white;
     box-shadow: 0px 4px 10px var(--shadow-color);
-    width: 240px;
     border-radius: 12px;
     padding: 20px 10px;
     z-index: 999;
+    
+    transform: translateX(100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease;
   }
-
   .navbar.active {
-    display: flex;
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
   }
-
   .navbar a {
     display: block;
     width: 100%;
     text-align: center;
   }
-
   .menu-toggle {
     display: block;
   }
-
   .btn2,
   .btn-contact {
     width: 80%;
@@ -207,21 +211,18 @@ body {
     position: relative;
     overflow: hidden;
   }
-
   .btn-contact {
     display: flex;
     align-items: center;
     justify-content: center; /* Texto centrado inicialmente */
     position: relative;
   }
-
   .btn-contact p {
     margin: 0;
     transition: transform 0.3s ease;
     color: #58813e;
     z-index: 1;
   }
-
   .btn-contact svg {
     position: absolute;
     right: 16px;
@@ -233,12 +234,10 @@ body {
     transition: opacity 0.3s ease;
     z-index: 0;
   }
-
   .btn-contact:hover p,
   .btn-contact:focus p {
     transform: translateX(-10px);
   }
-
   .btn-contact:hover svg,
   .btn-contact:focus svg {
     opacity: 1;
