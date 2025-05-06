@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Categorías</title>
+  <link rel="stylesheet" href="/css/categorias.css">
+</head>
+<body>
+  <header class="header">
+    <img src="/img/logo.png" alt="Plaxtilineas" class="logo">
+    <h1>Categorías</h1>
+  </header>
+
+  <main class="main-container">
+    <section class="card">
+      <h2>Crear Nueva Categoría</h2>
+      <form id="categoriaForm" class="categoria-form">
+        <input type="text" id="nombreCategoria" placeholder="Nombre de la categoría" required>
+        <input type="file" id="iconoCategoria" accept="image/*">
+        <button type="submit">Agregar</button>
+      </form>
+    </section>
+    <section class="card">
+      <h2>Lista de Categorías</h2>
+      <table id="tablaCategorias">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Ícono</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Aquí se insertan dinámicamente -->
+        </tbody>
+      </table>      
+    </section>
+    <div class="acciones">
+      <a href="/dashboard/dashboard.html" class="btn-regresar">← Volver al Dashboard</a>
+    </div>
+  </main>
+
+  <script src="/js/LogicaCategorias.js"></script>
+</body>
+</html>

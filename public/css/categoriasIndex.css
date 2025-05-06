@@ -1,0 +1,41 @@
+.categorias-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 40px 20px;
+}
+
+.categoria-card {
+  width: 140px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 16px;
+  transition: transform 0.2s ease;
+}
+
+.categoria-card:hover {
+  transform: scale(1.05);
+}
+
+.categoria-card img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.categoria-card a {
+  text-decoration: none;
+  color: #648a4c;
+  font-weight: 600;
+  font-size: 14px;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.categoria-card a:hover {
+  color: #4f703b;
+}

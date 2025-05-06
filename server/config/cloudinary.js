@@ -1,5 +1,6 @@
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const multer = require('multer');
 require('dotenv').config();
 
 cloudinary.config({
@@ -8,15 +9,29 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
+// Storage con public_id personalizado
 const storage = new CloudinaryStorage({
   cloudinary,
-  params: {
+  params: async (req, file) => ({
     folder: 'plaxtilineas_productos',
-    allowed_formats: ['jpg', 'jpeg', 'png'],
-  }
+    public_id: `${Date.now()}-${file.originalname.split('.')[0]}`
+  })
 });
+
+// Validar tipo de archivo antes de subir
+const fileFilter = (req, file, cb) => {
+  const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/webp'];
+  if (validTypes.includes(file.mimetype)) {
+    cb(null, true);
+  } else {
+    cb(new Error('Formato de imagen no permitido'), false);
+  }
+};
+
+const upload = multer({ storage, fileFilter });
 
 module.exports = {
   cloudinary,
-  storage
+  storage,
+  upload
 };
