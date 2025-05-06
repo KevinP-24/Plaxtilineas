@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | Plaxtilineas</title>
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <header class="dashboard-header">
+      <img src="/img/logo.png" alt="Logo" class="logo">
+      <h1>Panel de Administración</h1>
+      <button id="logoutBtn">Cerrar Sesión</button>
+    </header>
+
+    <main class="dashboard-main">
+      <section class="card">
+        <h2>Bienvenido, administrador</h2>
+        <p>Aquí podrás gestionar productos, categorías y subcategorías.</p>
+      </section>
+      <section class="card">
+        <ul>
+          <li><a href="/productos.html">🛠️ Gestionar productos</a></li>
+          <li><a href="#">📂 Gestionar categorías</a></li>
+          <li><a href="#">📁 Gestionar subcategorías</a></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // ✅ Verificar token JWT al cargar
+    const token = localStorage.getItem('token');
+    if (!token) {
+      window.location.href = '/login.html';
+    }
+
+    // ✅ Cerrar sesión
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('token');
+      window.location.href = '/login.html';
+    });
+  </script>
+</body>
+</html>
