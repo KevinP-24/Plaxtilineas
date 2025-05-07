@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gestión de Productos</title>
+  <link rel="stylesheet" href="/css/adminProductos.css" />
+</head>
+<body>
+  <header class="header">
+    <img src="/img/logo.png" alt="Plaxtilineas" class="logo" />
+    <h1>Productos</h1>
+  </header>
+
+  <main class="main-container">
+
+   
+    <!-- Formulario para crear producto -->
+    <section class="card">
+      <h2>Crear Producto</h2>
+      <form id="formProducto" enctype="multipart/form-data">
+        <input type="text" id="nombreProducto" placeholder="Nombre del producto" required />
+        <input type="number" id="precioProducto" placeholder="Precio" required min="0" step="0.01" />
+        <textarea id="descripcionProducto" placeholder="Descripción (opcional)"></textarea>
+        <select id="subcategoriaProducto" required>
+          <option value="">Seleccione subcategoría</option>
+        </select>
+        <input type="file" id="imagenProducto" accept="image/*" />
+        <button type="submit" class="agregar">Crear Producto</button>
+      </form>
+    </section>
+
+     <!-- Filtro por subcategoría -->
+     <section class="card">
+      <h2>Filtrar por Subcategoría</h2>
+      <select id="selectFiltroSubcategoria" required>
+        <option value="">Seleccione una subcategoría</option>
+      </select>
+    </section>
+
+    <!-- Lista de productos -->
+    <section class="card">
+      <h2>Lista de Productos</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tablaProductos"></tbody>
+      </table>
+    </section>
+
+    <div class="acciones">
+      <a href="/dashboard/dashboard.html" class="btn-regresar">← Volver al Dashboard</a>
+    </div>
+
+  </main>
+
+  <script src="/js/LogicaProductos.js"></script>
+</body>
+</html>

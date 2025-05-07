@@ -9,9 +9,9 @@ const controller = require('../controllers/productos.controller');
 // Rutas públicas
 router.get('/', controller.obtenerProductos);
 
-// Rutas protegidas (solo admin logueado con token puede acceder)
+// Rutas protegidas
 router.post('/', verifyToken, upload.single('imagen'), controller.crearProductoDesdeRuta);
-router.put('/:id', verifyToken, controller.actualizarProducto);
+router.put('/:id', verifyToken, upload.single('imagen'), controller.actualizarProducto);
 router.delete('/:id', verifyToken, controller.eliminarProducto);
 
 module.exports = router;

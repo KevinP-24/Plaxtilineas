@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Subcategorías</title>
+  <link rel="stylesheet" href="/css/subCategorias.css" />
+</head>
+<body>
+  <header class="header">
+    <img src="/img/logo.png" alt="Plaxtilineas" class="logo" />
+    <h1>Subcategorías</h1>
+  </header>
+
+  <main class="main-container">
+    <section class="card">
+      <h2>Crear Subcategoría</h2>
+      <form id="formSubcategoria">
+        <select id="selectCategoria" required>
+          <option value="">Selecciona una categoría</option>
+        </select>
+        <input type="text" id="nombreSubcategoria" placeholder="Nombre de la subcategoría" required />
+        <button type="submit" class="agregar">Crear</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Lista de Subcategorías</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tablaSubcategorias"></tbody>
+      </table>
+    </section>
+
+    <div class="acciones">
+      <a href="/dashboard/dashboard.html" class="btn-regresar">← Volver al Dashboard</a>
+    </div>
+  </main>
+
+  <script src="/js/LogicaSubcategorias.js"></script>
+</body>
+</html>
