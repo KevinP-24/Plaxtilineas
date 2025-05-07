@@ -1,4 +1,5 @@
 const db = require('../db');
+const cloudinary = require('../config/cloudinary').cloudinary;
 
 exports.obtenerProductos = async (req, res) => {
   try {
@@ -19,30 +20,28 @@ exports.obtenerProductos = async (req, res) => {
   }
 };
 
+
+
 exports.crearProductoDesdeRuta = async (req, res) => {
   try {
-    const {
-      nombre,
-      descripcion,
-      cantidad,
-      precio,
-      subcategoria_id
-    } = {
-      nombre: req.body.nombre?.trim(),
-      descripcion: req.body.descripcion?.trim(),
-      cantidad: parseInt(req.body.cantidad),
-      precio: parseFloat(req.body.precio),
-      subcategoria_id: parseInt(req.body.subcategoria_id)
-    };
+    const nombre = req.body.nombre?.trim() || '';
+    const descripcion = req.body.descripcion?.trim() || '';
+    const cantidad = parseInt(req.body.cantidad, 10);
+    const precio = parseFloat(req.body.precio);
+    const subcategoria_id = parseInt(req.body.subcategoria_id, 10);
+
+    // ✅ Validaciones mínimas
+    if (!nombre || isNaN(precio) || isNaN(cantidad) || isNaN(subcategoria_id)) {
+      return res.status(400).json({ error: 'Datos inválidos. Verifica los campos del formulario.' });
+    }
 
     const imagen_url = req.file?.path || '';
     const public_id = req.file?.filename ? `plaxtilineas_productos/${req.file.filename}` : '';
 
     await db.query(`
       INSERT INTO productos (nombre, descripcion, cantidad, precio, imagen_url, public_id, subcategoria_id)
-      VALUES (?, ?, ?, ?, ?, ?, ?)`,
-      [nombre, descripcion, cantidad, precio, imagen_url, public_id, subcategoria_id]
-    );
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+    `, [nombre, descripcion, cantidad, precio, imagen_url, public_id, subcategoria_id]);
 
     return res.status(201).json({
       mensaje: 'Producto con imagen creado con éxito',
@@ -54,8 +53,6 @@ exports.crearProductoDesdeRuta = async (req, res) => {
     return res.status(500).json({ error: 'Error interno al crear el producto' });
   }
 };
-
-const cloudinary = require('../config/cloudinary').cloudinary;
 
 exports.actualizarProducto = async (req, res) => {
   const { id } = req.params;
@@ -88,7 +85,6 @@ exports.actualizarProducto = async (req, res) => {
         id
       ]
     );
-
     res.json({ mensaje: 'Producto actualizado con éxito' });
   } catch (err) {
     console.error('❌ Error al actualizar producto:', err);
