@@ -11,22 +11,36 @@
     <link rel="stylesheet" href="/css/style_navbar.css">
     <link rel="stylesheet" href="/css/pronto.css">
     <link rel="stylesheet" href="/css/product-card.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <div class="help-message" id="helpMessage">¿Necesitas ayuda?</div> 
+    <link rel="stylesheet" href="/css/botoneSociales.css">
+
+
 
 </head>
 <body>
 
+    <div style="display: flex;">
+        <!-- Menú lateral dinámico -->
+        <aside id="menu-categorias" style="width: 280px; padding: 20px;">
+            <h3>Categorías</h3>
+            <!-- Aquí se insertará todo con JS -->
+        </aside>  
+        <!-- Contenedor de productos -->
+    <main style="flex: 1;">
+        <div id="contenedor-productos" class="productos-grid"></div>
+    </main>
+    </div>
     <div id="contenedor-productos" class="productos-grid"></div>
 
-    <!--
-    <section class="mensaje-construccion">
-        <div class="mensaje-box">
-            <h2>Estamos trabajando en ello</h2>
-            <p>La sección de productos estará disponible muy pronto.</p>
-        </div>
-    </section>
-    -->
-    <script src="js/cargarNavbar.js"></script>
-    <script src="js/cargarCard-producto.js"></script>
-    
+
+    <script src="js/general/logicaNavBar.js"></script>
+    <script src="js/cargarCard-productos.js"></script>
+    <script src="js/cargarProductosPorSubcategoria.js"></script>
+    <script src="js/cargarMenuCategorias.js"></script>
+    <script src="js/general/cargarFooter.js"></script>
+    <script src="js/general/cargarBotones.js"></script>
+
+
 </body>
 </html>
