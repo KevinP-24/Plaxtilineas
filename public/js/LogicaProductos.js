@@ -37,28 +37,22 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('/api/productos'),
         fetch('/api/subcategorias')
       ]);
-  
       const productos = await resProductos.json();
       const subcategorias = await resSubcategorias.json();
-  
       console.log('📦 Productos recibidos del backend:', productos);
       console.log('📋 Subcategorías disponibles:', subcategorias);
-  
       const subcategoriaId = filtroSubcategoria.value;
       tabla.innerHTML = '';
-  
       const filtrados = productos.filter(p => {
         const coincide = String(p.subcategoria_id) === String(subcategoriaId);
         console.log(`¿${p.nombre} (${p.subcategoria_id}) coincide con ${subcategoriaId}?`, coincide);
         return !subcategoriaId || coincide;
       });
-  
       console.log('🟢 Productos filtrados:', filtrados);
-  
       filtrados.forEach(p => {
         const fila = document.createElement('tr');
         fila.setAttribute('data-id', p.id);
-  
+      
         const selectHTML = `
           <select class="input-subcategoria" data-id="${p.id}">
             ${subcategorias.map(s => `
@@ -68,7 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
             `).join('')}
           </select>
         `;
-  
+      
+        const selectUnidadHTML = `
+          <select class="input-unidad" data-id="${p.id}">
+            <option value="1" ${parseInt(p.cantidad) === 1 ? 'selected' : ''}>Metro</option>
+            <option value="0" ${parseInt(p.cantidad) === 0 ? 'selected' : ''}>Unidad</option>
+          </select>
+        `;
+      
         fila.innerHTML = `
           <td>${p.id}</td>
           <td>
@@ -81,31 +82,31 @@ document.addEventListener('DOMContentLoaded', () => {
           <td><input type="number" value="${p.precio}" class="input-precio" data-id="${p.id}" /></td>
           <td><input type="text" value="${p.descripcion || ''}" class="input-desc" data-id="${p.id}" /></td>
           <td>${selectHTML}</td>
+          <td>${selectUnidadHTML}</td> <!-- ✅ Editable unidad -->
           <td class="actions">
             <button class="edit" onclick="actualizarProducto(${p.id})">Actualizar</button>
             <button class="delete" onclick="eliminarProducto(${p.id})">Eliminar</button>
           </td>
         `;
         tabla.appendChild(fila);
-      });
-  
+      });      
     } catch (err) {
       console.error('❌ Error al cargar productos:', err);
     }
   }
-  
 
   window.actualizarProducto = async (id) => {
     const nombre = document.querySelector(`.input-nombre[data-id="${id}"]`)?.value.trim();
     const precio = document.querySelector(`.input-precio[data-id="${id}"]`)?.value.trim();
     const descripcion = document.querySelector(`.input-desc[data-id="${id}"]`)?.value.trim();
     const subcategoria_id = document.querySelector(`.input-subcategoria[data-id="${id}"]`)?.value;
+    const unidad = document.querySelector(`.input-unidad[data-id="${id}"]`)?.value; // ✅ nueva línea
     const fileInput = document.querySelector(`.img-edit[data-id="${id}"]`);
     const imagen = fileInput?.files[0];
     const botonActualizar = document.querySelector(`button.edit[data-id="${id}"]`);
   
     // ✅ Validaciones básicas
-    if (!nombre || isNaN(precio) || !subcategoria_id || isNaN(subcategoria_id)) {
+    if (!nombre || isNaN(precio) || !subcategoria_id || isNaN(subcategoria_id) || unidad === '') {
       alert('⚠️ Por favor completa todos los campos correctamente.');
       if (botonActualizar) botonActualizar.disabled = true;
       return;
@@ -117,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     formData.append('nombre', nombre);
     formData.append('precio', precio);
     formData.append('descripcion', descripcion);
-    formData.append('cantidad', 0);
+    formData.append('cantidad', unidad); // ✅ se envía correctamente la unidad
     formData.append('subcategoria_id', subcategoria_id);
     if (imagen) formData.append('imagen', imagen);
   
@@ -142,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.error('❌ Error al actualizar producto:', err);
       alert('❌ Error de red o servidor');
     }
-  };   
+  };
   
   // ✅ Crear producto
   form.addEventListener('submit', async (e) => {
@@ -152,12 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const precio = document.getElementById('precioProducto').value;
     const subcategoria_id = selectSubcategoria.value;
     const imagen = document.getElementById('imagenProducto').files[0];
+    const unidad = document.getElementById('unidadProducto').value;
 
     const formData = new FormData();
     formData.append('nombre', nombre);
     formData.append('descripcion', descripcion);
     formData.append('precio', precio);
-    formData.append('cantidad', 0);
+    formData.append('cantidad', unidad);
     formData.append('subcategoria_id', subcategoria_id);
     if (imagen) formData.append('imagen', imagen);
 

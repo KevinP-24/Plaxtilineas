@@ -9,13 +9,24 @@ async function renderProductCard(producto) {
   const res = await fetch('/components/product-card.html');
   let template = await res.text();
 
+  // Fallback de imagen
+  const imagen = producto.imagen_url && producto.imagen_url.trim() !== ''
+    ? producto.imagen_url
+    : 'https://via.placeholder.com/200x150?text=Sin+Imagen';
+
+  // Unidad (si no existe en el backend, usa una genérica)
+  const unidad = producto.unidad || 'unidad';
+
+  // Precio formateado
+  const precioFormateado = parseInt(producto.precio).toLocaleString('es-CO');
+
   template = template
-    .replace(/{{imagen_url}}/g, producto.imagen)
+    .replace(/{{imagen_url}}/g, imagen)
     .replace(/{{nombre_producto}}/g, producto.nombre)
-    .replace(/{{precio}}/g, producto.precio)
-    .replace(/{{unidad}}/g, producto.unidad)
-    .replace(/{{etiqueta_texto}}/g, producto.enLiquidacion ? 'Liquidación' : '')
-    .replace(/{{etiqueta_clase}}/g, producto.enLiquidacion ? '' : 'hidden');
+    .replace(/{{precio}}/g, precioFormateado)
+    .replace(/{{unidad}}/g, unidad)
+    .replace(/{{etiqueta_texto}}/g, '')
+    .replace(/{{etiqueta_clase}}/g, 'hidden');
 
   document.getElementById('contenedor-productos').innerHTML += template;
 }

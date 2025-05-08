@@ -8,6 +8,7 @@ const verifyToken = require('../middleware/auth.middleware');
 
 // Pública
 router.get('/', controller.obtenerCategorias);
+router.get('/con-subcategorias', controller.obtenerCategoriasConSubcategorias);
 
 // Protegidas
 router.post('/', verifyToken, upload.single('icono'), controller.crearCategoriaConIcono);

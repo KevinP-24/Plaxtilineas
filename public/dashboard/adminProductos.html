@@ -24,6 +24,11 @@
         <select id="subcategoriaProducto" required>
           <option value="">Seleccione subcategoría</option>
         </select>
+        <select id="unidadProducto" required>
+          <option value="">Seleccione unidad</option>
+          <option value="1">Metro</option>
+          <option value="0">Unidad</option>
+        </select>
         <input type="file" id="imagenProducto" accept="image/*" />
         <button type="submit" class="agregar">Crear Producto</button>
       </form>
@@ -48,6 +53,7 @@
             <th>Nombre</th>
             <th>Precio</th>
             <th>Descripción</th>
+            <th>Unidad</th> 
             <th>Acciones</th>
           </tr>
         </thead>

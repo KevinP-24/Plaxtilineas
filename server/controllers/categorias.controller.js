@@ -119,3 +119,51 @@ exports.eliminarCategoria = async (req, res) => {
     res.status(500).json({ error: 'No se pudo eliminar la categoría' });
   }
 };
+
+//Funcion para crear el arbol del menu principal de forma dinamica
+exports.obtenerCategoriasConSubcategorias = async (req, res) => {
+  const sql = `
+    SELECT 
+      c.id AS categoria_id,
+      c.nombre AS categoria_nombre,
+      c.icono_url,
+      s.id AS subcategoria_id,
+      s.nombre AS subcategoria_nombre,
+      COUNT(p.id) AS cantidad_productos
+    FROM categorias c
+    LEFT JOIN subcategorias s ON s.categoria_id = c.id
+    LEFT JOIN productos p ON p.subcategoria_id = s.id
+    GROUP BY c.id, s.id
+    ORDER BY c.nombre, s.nombre;
+  `;
+
+  try {
+    const [results] = await db.query(sql); // 👈 importante el [results]
+
+    const categorias = {};
+
+    results.forEach(row => {
+      if (!row.subcategoria_id) return;
+
+      if (!categorias[row.categoria_id]) {
+        categorias[row.categoria_id] = {
+          id: row.categoria_id,
+          nombre: row.categoria_nombre,
+          icono_url: row.icono_url,
+          subcategorias: []
+        };
+      }
+
+      categorias[row.categoria_id].subcategorias.push({
+        id: row.subcategoria_id,
+        nombre: row.subcategoria_nombre,
+        cantidad: row.cantidad_productos
+      });
+    });
+
+    res.json(Object.values(categorias));
+  } catch (err) {
+    console.error('❌ Error en consulta:', err);
+    res.status(500).json({ error: 'Error al obtener categorías' });
+  }
+};
