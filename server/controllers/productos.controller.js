@@ -3,7 +3,8 @@ const cloudinary = require('../config/cloudinary').cloudinary;
 
 exports.obtenerProductos = async (req, res) => {
   try {
-    const [rows] = await db.query(`
+    const { subcategoria_id } = req.query;
+    let query = `
       SELECT p.id, p.nombre, p.descripcion, p.cantidad, p.precio, p.imagen_url,
              p.subcategoria_id,
              s.nombre AS subcategoria,
@@ -11,7 +12,14 @@ exports.obtenerProductos = async (req, res) => {
       FROM productos p
       JOIN subcategorias s ON p.subcategoria_id = s.id
       JOIN categorias c ON s.categoria_id = c.id
-    `);
+    `;
+    const params = [];
+    // Si se incluye un subcategoria_id, se agrega a la query
+    if (subcategoria_id) {
+      query += ' WHERE p.subcategoria_id = ?';
+      params.push(subcategoria_id);
+    }
+    const [rows] = await db.query(query, params);
     console.log('🧪 Productos desde MySQL:', rows);
     res.json(rows);
   } catch (err) {
@@ -19,8 +27,6 @@ exports.obtenerProductos = async (req, res) => {
     res.status(500).json({ error: 'No se pudieron obtener los productos' });
   }
 };
-
-
 
 exports.crearProductoDesdeRuta = async (req, res) => {
   try {

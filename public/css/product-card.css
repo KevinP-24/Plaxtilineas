@@ -13,12 +13,14 @@
   .productos-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 40px;
+    justify-content: center;   /* ✅ Centra las tarjetas horizontalmente */
+    align-items: flex-start;
+    gap: 24px;
+    padding: 40px 20px;
+    width: 100%;
+    box-sizing: border-box;
   }
-  
-  
+
   /* ✅ Card de producto */
   .product-card {
     background: var(--secondary-color);

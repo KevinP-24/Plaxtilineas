@@ -7,38 +7,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- (icono de la pestaña) -->
     <link rel="icon" href="./img/logopesta.png" type="image/png">
-
-    <link rel="stylesheet" href="/css/style_navbar.css">
-    <link rel="stylesheet" href="/css/pronto.css">
+    <link rel="stylesheet" href="/css/productosPrincipal.css">
     <link rel="stylesheet" href="/css/product-card.css">
-    <link rel="stylesheet" href="/css/footer.css">
-    <div class="help-message" id="helpMessage">¿Necesitas ayuda?</div> 
-    <link rel="stylesheet" href="/css/botoneSociales.css">
-
-
-
+    <!-- Estilos CSS generales de la pagina -->
+    <link rel="stylesheet" href="/css/general/style_navbar.css?v=2">
+    <link rel="stylesheet" href="/css/general/botoneSociales.css">
+    <link rel="stylesheet" href="/css/general/footer.css">
+    
 </head>
 <body>
 
-    <div style="display: flex;">
-        <!-- Menú lateral dinámico -->
-        <aside id="menu-categorias" style="width: 280px; padding: 20px;">
-            <h3>Categorías</h3>
-            <!-- Aquí se insertará todo con JS -->
-        </aside>  
-        <!-- Contenedor de productos -->
-    <main style="flex: 1;">
+    <div class="layout-productos">
+    <!-- Menú lateral dinámico -->
+    <aside id="menu-categorias">
+        <h3>Categorías</h3>
+        <!-- Aquí se insertará todo con JS -->
+    </aside>
+
+    <!-- Contenedor de productos -->
+    <main>
         <div id="contenedor-productos" class="productos-grid"></div>
     </main>
     </div>
-    <div id="contenedor-productos" class="productos-grid"></div>
-
 
     <script src="js/general/logicaNavBar.js"></script>
     <script src="js/cargarCard-productos.js"></script>
     <script src="js/cargarProductosPorSubcategoria.js"></script>
     <script src="js/cargarMenuCategorias.js"></script>
     <script src="js/general/cargarFooter.js"></script>
+    <div class="help-message" id="helpMessage">¿Necesitas ayuda?</div> 
     <script src="js/general/cargarBotones.js"></script>
 
 

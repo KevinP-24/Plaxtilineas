@@ -1,0 +1,210 @@
+:root {
+  --primary-color: #648a4c;
+  --secondary-color: #ffffff;
+  --background-color: #f4f4f4;
+  --text-color: #333;
+  --shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+}
+
+/* Layout general con espacio superior para navbar */
+.layout-productos {
+  display: flex;
+  padding-top: 100px; /* evita que choque con navbar fija */
+  background-color: var(--background-color);
+}
+
+main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+/* Menú lateral */
+#menu-categorias {
+  width: 260px;
+  padding: 20px;
+  background-color: #fff;
+  border-right: 1px solid #ddd;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+#menu-categorias h3 {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: var(--text-color);
+}
+
+.categoria {
+  margin-bottom: 10px;
+}
+
+.toggle-subcategorias {
+  background: none;
+  border: none;
+  font-weight: bold;
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.toggle-subcategorias:hover {
+  text-decoration: underline;
+}
+
+.subcategorias,
+.subcategorias li {
+  list-style: none !important;
+  margin: 0;
+  padding: 0;
+}
+
+#menu-categorias ul,
+#menu-categorias li {
+  list-style-type: none !important;
+  padding: 0;
+  margin: 0;
+}
+
+.subcategorias a {
+  text-decoration: none !important;
+  color: var(--text-color) !important;
+  font-size: 15px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 4px 0;
+  transition: color 0.2s ease;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.subcategorias li {
+  list-style: none;
+  margin: 4px 0;
+}
+
+.subcat-item {
+  display: inline-block;
+  font-size: 15px;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.2s ease;
+}
+
+.subcat-item:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+/* Grilla de productos */
+.productos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;     /* ✅ centra horizontalmente las filas */
+  align-items: flex-start;
+  padding: 32px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Tarjeta individual */
+.product-card {
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+}
+
+.product-image-wrapper {
+  height: 150px;
+  overflow: hidden;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #ffc107;
+  color: #333;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.product-info {
+  padding: 12px;
+  text-align: center;
+}
+
+.product-name {
+  font-size: 16px;
+  color: var(--text-color);
+  margin-bottom: 6px;
+}
+
+.product-price {
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+}
+
+.select-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.select-btn:hover {
+  background-color: #557a3e;
+}
+
+.flecha {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  margin-left: 8px;
+}
+
+.flecha.abierta {
+  transform: rotate(90deg);
+}
+/*Animacion de las sub categorias */
+.subcategorias {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 0;
+  transition: height 0.3s ease;
+}
+
+.subcategorias.abierta {
+  max-height: 500px; /* suficientemente alto para mostrar todo el contenido */
+}

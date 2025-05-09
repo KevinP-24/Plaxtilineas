@@ -12,8 +12,8 @@ async function renderProductCard(producto) {
   const imagen = producto.imagen_url && producto.imagen_url.trim() !== ''
     ? producto.imagen_url
     : 'https://via.placeholder.com/200x150?text=Sin+Imagen';
-
-  const unidad = producto.unidad || 'unidad';
+  //Deinir las unidades
+  const unidad = producto.unidad === 1 ? 'Metro' : 'Unidad';
   const precioFormateado = parseInt(producto.precio).toLocaleString('es-CO');
 
   template = template

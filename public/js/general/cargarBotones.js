@@ -11,14 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
 const helpMessage = document.getElementById('helpMessage');
 
 // Función para mostrar y ocultar el mensaje
+// Mostrar y ocultar con fade más suave
 function toggleHelpMessage() {
-    // Mostrar el mensaje
     helpMessage.classList.add('show');
-
-    // Ocultar el mensaje después de 4 segundos
     setTimeout(() => {
         helpMessage.classList.remove('show');
-    }, 2000);
+    }, 3000); // antes 2000
 }
+
 // Repetir cada 5 segundos
 setInterval(toggleHelpMessage, 5000);
