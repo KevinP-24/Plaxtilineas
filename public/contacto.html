@@ -37,8 +37,8 @@
   <!-- (icono de la pestaña) -->
   <link rel="icon" href="./img/logopesta.png" type="image/png">
   <!-- Estilos CSS -->
-  <link rel="stylesheet" href="/css/asistente.css"> 
-  <link rel="stylesheet" href="/css/mapaCuadrado.css">
+  <link rel="stylesheet" href="/css/general/asistente.css"> 
+  <link rel="stylesheet" href="/css/general/mapaCuadrado.css">
   <!-- Estilos CSS generales de la pagina -->
   <link rel="stylesheet" href="/css/general/style_navbar.css?v=2">
   <link rel="stylesheet" href="/css/general/botoneSociales.css">
@@ -69,54 +69,72 @@
 <body>
 
 
-  <section class="asistente">
-    <div class="main-container">
-      <!-- Ventana tipo WhatsApp -->
-      <div class="whatsapp-window">
-        <div class="whatsapp-header">
-          <img src="./img/logopesta.png" alt="Logo PlaxtiLineas">
-          <div>
-            <strong>PlaxtiLineas</strong><br>
-            <small>Responde rápidamente</small>
-          </div>
+<section class="asistente" aria-labelledby="asistente-titulo">
+  <div class="main-container">
+    
+    <!-- Ventana simulada de WhatsApp -->
+    <article class="whatsapp-window" role="region" aria-label="Chat de atención al cliente">
+      <header class="whatsapp-header">
+        <img src="./img/logopesta.png" alt="Logo de PlaxtiLineas">
+        <div>
+          <strong id="asistente-titulo">PlaxtiLineas</strong><br>
+          <small>Responde rápidamente</small>
         </div>
-        <div class="whatsapp-body">
-          <div class="bubble assistant">
-            ¡Hola! 👋<br>
-            ¿En qué podemos ayudarte hoy?
-          </div>
+      </header>
+      
+      <div class="whatsapp-body">
+        <div class="bubble assistant">
+          ¡Hola! 👋<br>
+          ¿En qué podemos ayudarte hoy?
         </div>
-        <a href="https://wa.me/+573006680125?text=Hola, necesito ayuda" target="_blank" class="whatsapp-button">
-          Chatea en WhatsApp
-        </a>
       </div>
-      <!-- NUEVO: contenedor exclusivo para la imagen del asistente -->
-      <div class="asistente-imagen-container">
-        <img src="./img/ayuda.png" alt="Asistente" class="assistant-img">
-      </div>  
+
+      <!-- Botón de acción dentro del simulador -->
+      <a href="https://wa.me/+573006680125?text=Hola, necesito ayuda"
+         target="_blank"
+         rel="noopener noreferrer nofollow"
+         class="whatsapp-chat-button"
+         aria-label="Iniciar chat de WhatsApp con PlaxtiLineas"
+         title="Chatea directamente con PlaxtiLineas por WhatsApp">
+        Chatea en WhatsApp
+      </a>
+    </article>
+
+    <!-- Imagen decorativa del asistente -->
+    <div class="asistente-imagen-container">
+      <img src="./img/ayuda.png" alt="Representación del asistente de atención" class="assistant-img" loading="lazy">
     </div>
-  </section>
-  
-  <!--Seccion donde se insertara el mapa-->
-  <section class="contenidoM mapa">
-    <h2 class="title">¡Recuerda Donde estamos Ubicados!</h2>
-    <p class="map-subtitle">Visítanos en nuestra ubicación física en Armenia, Quindío.</p>
-    <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!4v1733971947234!6m8!1m7!1srsqHEySLHOzmaXYDg-wMgg!2m2!1d4.535668507113891!2d-75.67495696103823!3f150.42944478021346!4f-11.723004583918524!5f0.9750208071456414" 
-        width="100%" 
-        height="400" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-    <div class="map-buttons">
-        <a href="https://www.google.com/maps/dir/?api=1&destination=Cra.19+%23+19-35+Armenia+Quindio" class="btn2">
-            <span class="spn2">Abirir en Google Maps</span>
-        </a>
-    </div>
-  </section>
+
+  </div>
+</section>
+
+<!-- Sección donde se inserta el mapa -->
+<section class="contenidoM mapa" aria-labelledby="ubicacion-titulo">
+  <h2 class="title" id="ubicacion-titulo">¡Recuerda Dónde estamos Ubicados!</h2>
+  <p class="map-subtitle">Visítanos en nuestra ubicación física en <strong>Armenia, Quindío</strong>.</p>
+
+  <div class="map-container">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!4v1733971947234!6m8!1m7!1srsqHEySLHOzmaXYDg-wMgg!2m2!1d4.535668507113891!2d-75.67495696103823!3f150.42944478021346!4f-11.723004583918524!5f0.9750208071456414" 
+      width="100%" 
+      height="400" 
+      allowfullscreen 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade"
+      aria-label="Ubicación física de Plaxtilineas en Armenia">
+    </iframe>
+  </div>
+
+  <div class="map-buttons">
+    <a href="https://www.google.com/maps/dir/?api=1&destination=Cra.19+%23+19-35+Armenia+Quindio" 
+       class="btn2" 
+       target="_blank" 
+       rel="noopener noreferrer">
+      <span class="spn2">Abrir en Google Maps</span>
+    </a>
+  </div>
+</section>
+
 
 
   <!-- Scripts -->
