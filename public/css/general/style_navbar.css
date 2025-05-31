@@ -165,6 +165,15 @@ body {
   opacity: 1;
   transform: translateX(0) translateY(-50%);
 }
+.navbar .btn2:last-of-type {
+  min-width: 50px;     /* Más angosto */
+  height: 50px;        /* Igual que los demás */
+  padding: 0 12px;     /* Ajuste lateral */
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 /* --- Ajustes Responsivos --- */
 /* Tablets y móviles grandes */
 @media (max-width: 768px) {
