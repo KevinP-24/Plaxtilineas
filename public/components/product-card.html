@@ -6,6 +6,12 @@
   <div class="product-info">
     <h4 class="product-name">{{nombre_producto}}</h4>
     <p class="product-price">{{unidad}} ${{precio}} </p>
-    <button class="select-btn">Seleccionar opciones</button>
+    <button class="info-btn"
+      data-nombre="{{nombre_producto}}"
+      data-precio="{{unidad}} ${{precio}}"
+      data-descripcion="{{descripcion}}"
+      data-imagen="{{imagen_url}}">
+      Más información
+    </button>
   </div>
 </div>

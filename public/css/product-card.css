@@ -1,92 +1,111 @@
-/* ✅ Variables personalizadas si estás en un entorno compatible (como dentro de :root) */
+/* Variables personalizadas */
 :root {
-    --primary-color: #648a4c;
-    --secondary-color: #ffffff;
-    --background-color: #f4f4f4;
-    --text-color: #333;
-    --shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    --border-radius: 12px;
-  }
-  .hidden {
-    display: none !important;
-  }
-  .productos-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;   /* ✅ Centra las tarjetas horizontalmente */
-    align-items: flex-start;
-    gap: 24px;
-    padding: 40px 20px;
-    width: 100%;
-    box-sizing: border-box;
-  }
+  --primary-color: #648a4c;
+  --secondary-color: #ffffff;
+  --background-color: #f4f4f4;
+  --text-color: #333;
+  --shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+}
 
-  /* ✅ Card de producto */
-  .product-card {
-    background: var(--secondary-color);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    padding: 16px;
-    width: 220px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .product-image-wrapper {
-    position: relative;
-    width: 100%;
-    height: 160px;
-    overflow: hidden;
-    border-radius: var(--border-radius);
-  }
-  
-  .product-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .tag {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background: #ffc107;
-    color: #333;
-    font-size: 12px;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-weight: bold;
-  }
-  
-  .product-info {
-    margin-top: 10px;
-    text-align: center;
-  }
-  
-  .product-name {
-    font-size: 16px;
-    color: var(--text-color);
-    margin-bottom: 6px;
-  }
-  
-  .product-price {
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-  }
-  
-  .select-btn {
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .select-btn:hover {
-    background-color: #557a3e;
-  }
-  
+.hidden {
+  display: none !important;
+}
+
+.productos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* ✅ Centra las tarjetas horizontalmente */
+  align-items: flex-start;
+  gap: 24px;
+  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Card de producto */
+.product-card {
+  background: var(--secondary-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.product-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tag {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: #ffc107;
+  color: #333;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.product-info {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.product-name {
+  font-size: 16px;
+  color: var(--text-color);
+  margin-bottom: 6px;
+}
+
+.product-price {
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+/* Estilo del botón "Seleccionar opciones" */
+.select-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.select-btn:hover {
+  background-color: #557a3e;
+}
+
+/* Estilo del nuevo botón "Más información" */
+.info-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.info-btn:hover {
+  background-color: #557a3e;
+}
