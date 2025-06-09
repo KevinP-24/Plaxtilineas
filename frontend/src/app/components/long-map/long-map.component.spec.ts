@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Contacto } from './contacto';
+import { LongMap } from './long-map.component';
 
-describe('Contacto', () => {
-  let component: Contacto;
-  let fixture: ComponentFixture<Contacto>;
+describe('LongMap', () => {
+  let component: LongMap;
+  let fixture: ComponentFixture<LongMap>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Contacto]
+      imports: [LongMap]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Contacto);
+    fixture = TestBed.createComponent(LongMap);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

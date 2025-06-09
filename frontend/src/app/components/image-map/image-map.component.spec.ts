@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Contacto } from './contacto';
+import { ImageMap } from './image-map.component';
 
-describe('Contacto', () => {
-  let component: Contacto;
-  let fixture: ComponentFixture<Contacto>;
+describe('ImageMap', () => {
+  let component: ImageMap;
+  let fixture: ComponentFixture<ImageMap>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [Contacto]
+      imports: [ImageMap]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(Contacto);
+    fixture = TestBed.createComponent(ImageMap);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
